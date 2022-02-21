@@ -4,16 +4,39 @@ lazy val root = project.in(file(".")).
    aggregate(smtlib.js, smtlib.jvm).
    settings(
       scalaVersion := "3.0.2",
-      publish := {},
-      publishLocal := {}
+      publishLocal := {},
    )
+
 
 lazy val smtlib = crossProject(JSPlatform, JVMPlatform)
    .in(file("code"))
    .settings(
-     organization := "com.regblanc",
+     organization := "space.vdb",
      name := "scala-smtlib",
      scalaVersion := "3.0.2",
+     version := "0.3.0",
+     publishTo := Some(Resolver.file("file", new File(Path.userHome.absolutePath+"/data/sources/maven-repo"))),
+     pomIncludeRepository := { _ => false },
+     licenses := Seq("MIT-style" -> url("https://opensource.org/licenses/MIT")),
+     pomExtra := (
+       <url>https://github.com/regb/scala-smtlib</url>
+         <developers>
+           <developer>
+             <id>reg</id>
+             <name>Regis Blanc</name>
+             <url>http://regblanc.com</url>
+           </developer>
+           <developer>
+            <id>bramvdbogaerde</id>
+            <name>Bram Vandenbogaerde</name>
+            <url>http://vdb.space</url>
+           </developer>
+         </developers>
+     ),
+
+     publishMavenStyle := true,
+     publishArtifact in Test := false,
+
      crossScalaVersions := Seq(),
      scalacOptions ++= Seq("-unchecked", "-deprecation", "-feature"),
      scalacOptions ++= {
@@ -42,9 +65,6 @@ git.useGitDescribe := true
 //
 //parallelExecution in Test := true
 //
-//publishMavenStyle := true
-//
-//publishArtifact in Test := false
 //
 //publishTo := {
 //  val nexus = "https://oss.sonatype.org/"
@@ -54,17 +74,3 @@ git.useGitDescribe := true
 //    Some("releases"  at nexus + "service/local/staging/deploy/maven2")
 //}
 //
-//pomIncludeRepository := { _ => false }
-//
-//licenses := Seq("MIT-style" -> url("https://opensource.org/licenses/MIT"))
-//
-//pomExtra := (
-//  <url>https://github.com/regb/scala-smtlib</url>
-//    <developers>
-//      <developer>
-//        <id>reg</id>
-//        <name>Regis Blanc</name>
-//        <url>http://regblanc.com</url>
-//      </developer>
-//    </developers>
-//)
