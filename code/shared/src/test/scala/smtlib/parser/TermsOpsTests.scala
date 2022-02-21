@@ -8,9 +8,9 @@ import TermsOps._
 
 class TermsOpsTests extends AnyFunSuite {
 
-  val s1 = Sort(Identifier(SSymbol("S1")))
-  val s2 = Sort(Identifier(SSymbol("S2")))
-  val s3 = Sort(Identifier(SSymbol("S3")), Seq(s1, s2))
+  val s1: Sort = Sort(Identifier(SSymbol("S1")))
+  val s2: Sort = Sort(Identifier(SSymbol("S2")))
+  val s3: Sort = Sort(Identifier(SSymbol("S3")), Seq(s1, s2))
 
   def sortId(s: Sort): Option[Sort] = Some(s)
 

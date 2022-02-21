@@ -2,7 +2,7 @@ package smtlib.common
 
 case class Position(line: Int, col: Int) extends Ordered[Position] {
 
-  def compare(that: Position) = {
+  def compare(that: Position): Int = {
     val ld = this.line - that.line
     if (ld == 0) {
       this.col - that.col

@@ -21,7 +21,7 @@ object TailPrinter extends Printer {
 
 class TailContext(writer: Writer) extends PrintingContext(writer) {
   var actions = new LinkedList[() => Unit]
-  var actionStack = List[LinkedList[() => Unit]]()
+  var actionStack: List[LinkedList[() => Unit]] = List[LinkedList[() => Unit]]()
 
   override def print(tree: Tree): Unit = {
     actions.append(() => super.print(tree))

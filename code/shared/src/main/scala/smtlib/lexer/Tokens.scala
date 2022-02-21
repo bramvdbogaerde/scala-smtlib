@@ -15,13 +15,13 @@ object Tokens {
   }
 
   case class StringLit(content: String) extends Token(StringLitKind) {
-    override def toString = "\"" + content + "\""
+    override def toString: String = "\"" + content + "\""
   }
   case class SymbolLit(content: String) extends Token(SymbolLitKind) {
-    override def toString = s"$content"
+    override def toString: String = s"$content"
   }
   case class Keyword(name: String) extends Token(KeywordKind) {
-    override def toString = s":$name"
+    override def toString: String = s":$name"
   }
 
   case class NumeralLit(n: BigInt) extends Token(NumeralLitKind) {
@@ -31,7 +31,7 @@ object Tokens {
     override def toString = d.toString
   }
   case class BinaryLit(content: Seq[Boolean]) extends Token(BinaryLitKind) {
-    override def toString = content.map(d => if(d) "1" else "0").mkString
+    override def toString: String = content.map(d => if(d) "1" else "0").mkString
   }
   case class HexadecimalLit(content: Hexadecimal) extends Token(HexadecimalLitKind) {
     override def toString = content.toString

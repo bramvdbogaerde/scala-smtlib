@@ -29,7 +29,7 @@ object Terms {
   }
 
   object SimpleIdentifier {
-    def apply(symbol: SSymbol) = Identifier(symbol, Seq())
+    def apply(symbol: SSymbol): Identifier = Identifier(symbol, Seq())
     def unapply(id: Identifier): Option[SSymbol] = id match {
       case Identifier(sym, Seq()) => Some(sym)
       case _ => None
@@ -39,7 +39,7 @@ object Terms {
   //(_ map or)
   object ExtendedIdentifier {
     
-    def apply(symbol: SSymbol, extension: SSymbol) = Identifier(symbol, Seq(extension))
+    def apply(symbol: SSymbol, extension: SSymbol): Identifier = Identifier(symbol, Seq(extension))
     
     def unapply(id: Identifier): Option[(SSymbol, SSymbol)] = id match {
       case Identifier(sym, Seq(ext@SSymbol(_))) => Some((sym, ext))

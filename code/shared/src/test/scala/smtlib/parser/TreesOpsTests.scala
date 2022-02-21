@@ -9,17 +9,17 @@ import TreesOps._
 
 class TreesOpsTests extends AnyFunSuite {
 
-  val s1 = Sort(Identifier(SSymbol("S1")))
-  val s2 = Sort(Identifier(SSymbol("S2")))
-  val s3 = Sort(Identifier(SSymbol("S3")), Seq(s1, s2))
+  val s1: Sort = Sort(Identifier(SSymbol("S1")))
+  val s2: Sort = Sort(Identifier(SSymbol("S2")))
+  val s3: Sort = Sort(Identifier(SSymbol("S3")), Seq(s1, s2))
 
-  val v1 = QualifiedIdentifier(Identifier(SSymbol("v1")))
-  val v2 = QualifiedIdentifier(Identifier(SSymbol("v2")))
-  val v3 = QualifiedIdentifier(Identifier(SSymbol("v3")))
+  val v1: QualifiedIdentifier = QualifiedIdentifier(Identifier(SSymbol("v1")))
+  val v2: QualifiedIdentifier = QualifiedIdentifier(Identifier(SSymbol("v2")))
+  val v3: QualifiedIdentifier = QualifiedIdentifier(Identifier(SSymbol("v3")))
 
-  val f1 = QualifiedIdentifier(Identifier(SSymbol("f1")))
-  val f2 = QualifiedIdentifier(Identifier(SSymbol("f2")))
-  val f3 = QualifiedIdentifier(Identifier(SSymbol("f3")))
+  val f1: QualifiedIdentifier = QualifiedIdentifier(Identifier(SSymbol("f1")))
+  val f2: QualifiedIdentifier = QualifiedIdentifier(Identifier(SSymbol("f2")))
+  val f3: QualifiedIdentifier = QualifiedIdentifier(Identifier(SSymbol("f3")))
 
   test("count function is 1 if exactly one variable") {
     assert(count(t => t == v1)(v1) === 1)
