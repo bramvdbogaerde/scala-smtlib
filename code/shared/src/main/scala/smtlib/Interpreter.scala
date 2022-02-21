@@ -48,21 +48,21 @@ object Interpreter {
   def execute(scriptReader: Reader)(implicit interpreter: Interpreter): Unit = {
     val parser = new Parser(new lexer.Lexer(scriptReader))
     val cmd: Command = null
-    do {
+    while ({ {
       val cmd = parser.parseCommand
       if(cmd != null)
         interpreter.eval(cmd)
-    } while(cmd != null)
+    } ;cmd != null}) ()
   }
 
   def execute(file: File)(implicit interpreter: Interpreter): Unit = {
     val parser = new Parser(new lexer.Lexer(new BufferedReader(new FileReader(file))))
     var cmd: Command = null
-    do {
+    while ({ {
       cmd = parser.parseCommand
       if(cmd != null)
         interpreter.eval(cmd)
-    } while(cmd != null)
+    } ;cmd != null}) ()
   }
 
 }
