@@ -22,7 +22,11 @@ lazy val smtlib = crossProject(JSPlatform, JVMPlatform)
         else Seq("-Ypatmat-exhaust-depth", "40")
      },
      libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.11" % "test"
-   )
+   ).jsSettings(
+      Compile / npmDependencies ++= Seq(
+       "z3-solver" -> "4.8.14-pre" 
+     )
+   ).jsConfigure(_.enablePlugins(ScalablyTypedConverterPlugin))
 
 
 git.useGitDescribe := true

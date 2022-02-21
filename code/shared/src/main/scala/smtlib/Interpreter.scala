@@ -5,6 +5,8 @@ import trees.Commands.{Script, Command}
 import trees.CommandsResponses.CommandResponse
 import trees.Terms._
 import printer.Printer
+import scala.concurrent.*
+import scala.concurrent.duration.DurationInt
 
 /*
  * An interpreter is a stateful object that can eval Commands and returns
@@ -23,7 +25,11 @@ trait Interpreter {
   val printer: Printer
   val parser: Parser
 
-  def eval(cmd: SExpr): SExpr
+  final def eval(cmd: SExpr)(using ExecutionContext): SExpr = 
+    Await.result(evalAsync(cmd), 0.nanos)
+
+  def evalAsync(cmd: SExpr)(using ExecutionContext): Future[SExpr]
+  
 
   //A free method is kind of justified by the need for the IO streams to be closed, and
   //there seems to be a decent case in general to have such a method for things like solvers
@@ -34,7 +40,7 @@ trait Interpreter {
 }
 
 object Interpreter {
-
+  import scala.concurrent.ExecutionContext.Implicits.global
   import java.io.Reader
   import java.io.FileReader
   import java.io.BufferedReader

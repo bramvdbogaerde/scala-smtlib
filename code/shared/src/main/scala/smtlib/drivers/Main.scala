@@ -21,7 +21,7 @@ object Main {
     val solver = args(0)
 
     if(solver == "cvc4") {
-
+      import scala.concurrent.ExecutionContext.Implicits.global
       val cvc4Interpreter = CVC4Interpreter.buildDefault
       val l = new Lexer(new FileReader(args(1)))
       val p = new Parser(l)

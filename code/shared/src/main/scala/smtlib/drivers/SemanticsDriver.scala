@@ -30,7 +30,7 @@ class SemanticsDriver(
   onRegularOutput: (CommandResponse) => Unit,
   onDiagnosticOutput: (String) => Unit
 ) {
-
+  import scala.concurrent.ExecutionContext.Implicits.global
   import SemanticsDriver._
 
   private var regularOutputChannel: (CommandResponse) => Unit = onRegularOutput

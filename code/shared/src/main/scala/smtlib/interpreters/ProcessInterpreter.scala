@@ -9,6 +9,7 @@ import trees.CommandsResponses._
 import printer._
 
 import java.io._
+import scala.concurrent.{Future, ExecutionContext}
 
 abstract class ProcessInterpreter(protected val process: Process, tailPrinter: Boolean) extends Interpreter {
 
@@ -47,7 +48,7 @@ abstract class ProcessInterpreter(protected val process: Process, tailPrinter: B
    * eval is blocking, and not synchronized. You
    * should not invoke eval from different threads.
    */
-  override def eval(cmd: SExpr): SExpr = {
+  override def evalAsync(cmd: SExpr)(using ExecutionContext): Future[SExpr] = Future {
     try {
       printer.printSExpr(cmd, in)
       in.write("\n")
