@@ -16,6 +16,7 @@ import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.time.SpanSugar._
 
 import scala.language.implicitConversions
+import scala.language.postfixOps
 
 class ParserTests extends AnyFunSuite with TimeLimits {
 

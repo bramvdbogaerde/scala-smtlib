@@ -12,6 +12,8 @@ import org.scalatest.concurrent.TimeLimits
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.time.SpanSugar._
 
+import scala.language.postfixOps
+
 
 class LexerTests extends AnyFunSuite with TimeLimits {
 
