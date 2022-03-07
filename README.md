@@ -1,7 +1,7 @@
 Scala SMT-LIB [![Build Status](http://laraquad4.epfl.ch:9000/regb/scala-smtlib/status/master)](http://laraquad4.epfl.ch:9000/regb/scala-smtlib)
 =============
 
-Scala SMT-LIB is a lightweight, no dependency, abstraction over the
+Scala SMT-LIB is a lightweight, abstraction over the
 [SMT-LIB](http://www.smtlib.org/) standard for Satisfiability Modulo Theory
 (SMT) solvers. It lets you use a type safe Scala API to build SMT-LIB scripts
 and ship them to any SMT-LIB complient solver over a process interface.
