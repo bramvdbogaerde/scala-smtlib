@@ -14,8 +14,8 @@ lazy val smtlib = crossProject(JSPlatform, JVMPlatform)
      organization := "space.vdb",
      name := "scala-smtlib",
      scalaVersion := "3.0.2",
-     version := "0.3.0",
-     publishTo := Some(Resolver.file("file", new File(Path.userHome.absolutePath+"/data/sources/maven-repo"))),
+     version := "0.4.0",
+     publishTo := Some(Resolver.file("file", new File(Path.userHome.absolutePath+"/maven-repo"))),
      pomIncludeRepository := { _ => false },
      licenses := Seq("MIT-style" -> url("https://opensource.org/licenses/MIT")),
      pomExtra := (
@@ -49,6 +49,9 @@ lazy val smtlib = crossProject(JSPlatform, JVMPlatform)
       Compile / npmDependencies ++= Seq(
        "z3-solver" -> "4.8.14-pre" 
      )
+   )
+   .jvmSettings(
+      libraryDependencies += "io.github.tudo-aqua" % "z3-turnkey" % "4.8.14"
    ).jsConfigure(_.enablePlugins(ScalablyTypedConverterPlugin))
 
 
